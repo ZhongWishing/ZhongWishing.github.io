@@ -1,0 +1,503 @@
+// Single-page resume: sticky anchor nav, timelines and letter-paper publication cards.
+// Every piece of text uses the ET Book stack ($body-font); hierarchy comes from caps, italics and old-style figures.
+
+$card-color: #fcf9f3;
+$mat-color: #fffdf9;
+$card-rule: 2.1rem;
+$nav-height: 4rem;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $nav-height + 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+// Upstream gives body a fixed 100% height, which would release the sticky header after one screen.
+body {
+  height: auto;
+  min-height: 100%;
+}
+
+// --------- Sticky anchor nav ---------
+
+body > header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba($paper-color, 0.96);
+  border-bottom: 1px solid rgba($border-color, 0.45);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  body > header {
+    background-color: rgba($paper-color, 0.84);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+
+header > nav.group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.6rem;
+  width: auto;
+  padding-top: 0;
+}
+
+header > nav.group:after { display: none; }
+
+header > nav a {
+  float: none;
+  padding: 1.25rem 0 1.15rem;
+  font-family: $body-font;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.16em;
+  box-shadow: inset 0 -2px 0 transparent;
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+
+nav.group a.active:before, nav.group a.active:after { content: none; }
+
+header > nav a.active {
+  color: $contrast-hover-color;
+  box-shadow: inset 0 -2px 0 $paper-highlight;
+}
+
+// --------- Sections ---------
+
+.resume-section {
+  padding: 1.5rem 0 3.5rem;
+}
+
+h1.resume-name {
+  margin: 3rem 0 0;
+  font-size: 3.6rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+// ET Book has no CJK glyphs, so the Chinese name falls through to the serif CJK fonts in $body-font.
+.resume-name-zh {
+  margin-left: 0.35em;
+  font-size: 0.62em;
+  letter-spacing: 0.12em;
+  color: $muted-color;
+}
+
+p.resume-tagline {
+  margin-top: 0.8rem;
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  color: $muted-color;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.8rem;
+  margin-top: 1.1rem;
+  font-size: 1.25rem;
+  line-height: 1.9rem;
+}
+
+.resume-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.resume-contact [class^="icon-"] { font-size: 0.9em; }
+
+p.resume-lede {
+  margin-top: 2.2rem;
+}
+
+.interest-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.6rem;
+}
+
+.interest-label {
+  font-style: italic;
+  font-size: 1.3rem;
+  color: $muted-color;
+}
+
+ul.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+}
+
+ul.interest-list li {
+  margin: 0;
+  padding: 0 0.95rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  letter-spacing: 0.02em;
+  color: $contrast-hover-color;
+  background-color: rgba($paper-highlight, 0.32);
+  border: 1px solid rgba($paper-highlight, 0.85);
+  border-radius: 999px;
+}
+
+h2.section-title {
+  margin: 0 0 2.4rem;
+  font-size: 2.3rem;
+  line-height: 1.3;
+}
+
+// --------- Timelines ---------
+// --tl-gap is the indent reserved for the rule; --tl-x is the rule's offset inside that indent.
+
+ol.timeline {
+  --tl-gap: 2.8rem;
+  --tl-x: 0.6rem;
+  position: relative;
+  width: 55%;
+  margin: 0;
+  padding: 0 0 0 var(--tl-gap);
+  -webkit-padding-start: var(--tl-gap);
+  -webkit-padding-end: 0;
+  list-style: none;
+}
+
+ol.timeline:before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: var(--tl-x);
+  width: 1px;
+  background: linear-gradient(to bottom, rgba($border-color, 0), $border-color 1.5rem, $border-color calc(100% - 1.5rem), rgba($border-color, 0));
+}
+
+ol.timeline > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+ol.timeline > li + li { margin-top: 2.2rem; }
+
+ol.timeline p {
+  width: auto;
+  margin: 0;
+  padding-right: 0;
+}
+
+ol.timeline > li.timeline-entry:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0.475rem;
+  left: calc(var(--tl-x) - var(--tl-gap) - 0.425rem + 0.5px);
+  box-sizing: border-box;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid $contrast-color;
+  border-radius: 50%;
+  background-color: $paper-color;
+  box-shadow: 0 0 0 0.3rem $paper-color;
+}
+
+ol.timeline > li.is-current:before {
+  background-color: $contrast-color;
+  box-shadow: 0 0 0 0.3rem $paper-color, 0 0 0 0.55rem rgba($paper-highlight, 0.55);
+}
+
+// The italic ET Book face carries old-style figures, which suits dates.
+p.timeline-when {
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.02em;
+  color: $muted-color;
+}
+
+p.experience-org {
+  margin-top: 0.2rem;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+}
+
+p.experience-detail {
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.8rem;
+  color: $muted-color;
+}
+
+.org-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.org-entry__text { min-width: 0; }
+
+.org-logo {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0.45rem;
+  background-color: $mat-color;
+  border: 1px solid rgba($border-color, 0.55);
+  border-radius: 0.6rem;
+  box-shadow: 0 1px 2px rgba($text-color, 0.06), 0 6px 14px -10px rgba($text-color, 0.35);
+}
+
+.org-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+ol.timeline > li.timeline-year {
+  font-family: "et-book-roman-old-style", $body-font;
+  font-size: 1.7rem;
+  line-height: 2rem;
+  letter-spacing: 0.04em;
+  color: $muted-color;
+}
+
+ol.timeline > li.timeline-year:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0.45rem;
+  left: calc(var(--tl-x) - var(--tl-gap) - 0.55rem + 0.5px);
+  box-sizing: border-box;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+  background: radial-gradient(circle, $border-color 0, $border-color 0.17rem, $paper-color 0.2rem);
+  box-shadow: 0 0 0 0.3rem $paper-color;
+}
+
+ol.timeline > li.timeline-year + li { margin-top: 1.2rem; }
+ol.timeline > li + li.timeline-year { margin-top: 3rem; }
+
+// --------- Publication cards ---------
+
+ol.timeline--papers {
+  width: 80%;
+  max-width: 56rem;
+}
+
+ol.timeline--papers > li.timeline-entry:before {
+  top: 2rem;
+  left: calc(var(--tl-x) - var(--tl-gap) - 0.35rem + 0.5px);
+  width: 0.7rem;
+  height: 0.7rem;
+  border: none;
+  background-color: $contrast-color;
+}
+
+// Short tick that hangs each card on the rule.
+ol.timeline--papers > li.timeline-entry:after {
+  content: "";
+  position: absolute;
+  top: 2.35rem;
+  left: calc(var(--tl-x) - var(--tl-gap));
+  width: calc(var(--tl-gap) - var(--tl-x));
+  height: 1px;
+  background-color: $border-color;
+}
+
+.paper-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.3rem;
+  background-color: $card-color;
+  border: 1px solid rgba($border-color, 0.55);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba($text-color, 0.06), 0 12px 26px -18px rgba($text-color, 0.3);
+  transition: box-shadow 0.25s ease;
+}
+
+.paper-card:hover {
+  box-shadow: 0 1px 2px rgba($text-color, 0.08), 0 18px 34px -18px rgba($text-color, 0.38);
+}
+
+.paper-card__thumb {
+  flex: 0 0 36%;
+  align-self: center;
+  max-width: 18rem;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  background-color: $mat-color;
+  border: 1px solid rgba($border-color, 0.5);
+  box-shadow: 0 1px 3px rgba($text-color, 0.08);
+}
+
+.paper-card__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// The repeating rules line up with the $card-rule line boxes of the text, like ruled letter paper.
+.paper-card__body {
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-width: 0;
+  margin-left: 1.4rem;
+  padding-left: 1.4rem;
+  border-left: 1px solid rgba($contrast-color, 0.28);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(#{$card-rule} - 1px), rgba($border-color, 0.3) calc(#{$card-rule} - 1px), rgba($border-color, 0.3) $card-rule);
+}
+
+.paper-card p, .paper-card h3 {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+p.paper-card__venue {
+  font-size: 1rem;
+  line-height: $card-rule;
+}
+
+p.paper-card__venue span {
+  display: inline-block;
+  padding: 0 0.6rem;
+  font-size: 1.15rem;
+  line-height: 1.6rem;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+  color: $contrast-color;
+  background-color: $card-color;
+  border: 1px solid rgba($contrast-color, 0.55);
+  border-radius: 2px;
+}
+
+h3.paper-card__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: $card-rule;
+}
+
+h3.paper-card__title a { color: $text-color; }
+
+h3.paper-card__title a:hover, h3.paper-card__title a:focus { color: $contrast-color; }
+
+p.paper-card__authors {
+  font-size: 1.2rem;
+  line-height: $card-rule;
+  color: $muted-color;
+}
+
+p.paper-card__authors strong {
+  font-weight: 700;
+  color: $text-color;
+}
+
+// Raised with relative positioning so the marker never grows the ruled line box.
+.paper-card sup {
+  position: relative;
+  top: -0.5em;
+  margin-left: 0.05em;
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+p.paper-card__note {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: $card-rule;
+  color: $muted-color;
+}
+
+.paper-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.3rem;
+  font-size: 1.05rem;
+  line-height: $card-rule;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.paper-card__links a:after { content: "\2009\2197"; }
+
+.credits { font-family: $body-font; }
+
+@media screen and (max-width: 760px) {
+  header > nav.group { column-gap: 1.6rem; }
+  header > nav a { letter-spacing: 0.1em; }
+  h1.resume-name { margin-top: 2.2rem; font-size: 3rem; }
+  ol.timeline, ol.timeline--papers {
+    --tl-gap: 2.3rem;
+    --tl-x: 0.5rem;
+    width: 92%;
+    max-width: none;
+  }
+  .paper-card { padding: 1rem; }
+  .paper-card__thumb { padding: 0.35rem; }
+  .paper-card__body { margin-left: 1rem; padding-left: 1rem; }
+  ol.timeline--papers > li.timeline-entry:before { top: 1.7rem; }
+  ol.timeline--papers > li.timeline-entry:after { top: 2.05rem; }
+}
+
+// Phone widths: the four nav items need tighter spacing to stay on one line, and a side-by-side
+// card would leave the title too narrow, so the figure moves on top.
+@media screen and (max-width: 540px) {
+  header > nav.group {
+    width: 94%;
+    justify-content: space-between;
+    column-gap: 0.6rem;
+  }
+  header > nav a {
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+  }
+  .org-logo { width: 3.2rem; height: 3.2rem; padding: 0.4rem; }
+  .paper-card { flex-direction: column; }
+  .paper-card__thumb {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16 / 9;
+  }
+  .paper-card__body {
+    align-self: stretch;
+    margin: 0.9rem 0 0;
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  header > nav a {
+    font-size: 0.9rem;
+    letter-spacing: 0;
+  }
+}

@@ -3,3 +3,6 @@ _site
 .jekyll-cache
 .DS\_Store
 config.codekit
+.bundle/
+.gems/
+vendor/

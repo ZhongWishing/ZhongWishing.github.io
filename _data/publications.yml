@@ -1,0 +1,40 @@
+# Publications, newest first; the timeline groups them by year.
+# venue + note form the card label (e.g. "NeurIPS 2026 · Poster").
+# authors is the author order; the name matching site.author is set in bold.
+# equal_contribution lists the authors that get a superscript * and an "Equal contribution" note.
+# url links the title and figure; links are the small links under the title; images live in assets/papers/.
+- title: "PreCoMem: Predictive Cognitive Memory for Self-Evolving Long-Term Dialogue Agents"
+  venue: NeurIPS 2026
+  note: Poster
+  year: 2026
+  authors: [Jian Zhong, Zeyu Liu, Pingchuan Cao, Rongduo Han, Shunye Tang, Guohuan Xie, Mingyuan Qin, Ran Ji, Xiao Liang, Wei Wang, Haining Zhang]
+  image: /assets/papers/precomem.webp
+  image_alt: "PreCoMem Figure 1: a memory evolution case study (coffee to tea)"
+  links:
+    - name: Code
+      url: https://github.com/ZhongWishing/PreCoMem
+
+- title: "EvalMem: An Operation-Level Diagnostic Framework for Long-Term Memory Systems"
+  venue: EMNLP 2026
+  note: Findings
+  year: 2026
+  authors: [Zeyu Liu, Jian Zhong, Rongduo Han, Ziyang Wu, Shunye Tang, Chenghao He, Yaxuan Yang, Yihang Qiu, Ailing Wang, Xiao Liang, Guohuan Xie, Xiaokang Xue, Gongchen Li, Haining Zhang, Wei Wang]
+  equal_contribution: [Zeyu Liu, Jian Zhong]
+  url: https://arxiv.org/abs/2609.22231
+  image: /assets/papers/evalmem.webp
+  image_alt: "EvalMem Figure 1: end-to-end evaluation versus operation-level diagnosis"
+  links:
+    - name: arXiv
+      url: https://arxiv.org/abs/2609.22231
+
+- title: "An Automated Multi-modal Evaluation Framework for Mobile Intelligent Assistants Based on Large Language Models and Multi-Agent Collaboration"
+  venue: UbiComp
+  note: Workshop
+  year: 2025
+  authors: [Meiping Wang, Jian Zhong, Rongduo Han, Liming Kang, Zhengkun Shi, Xiao Liang, Xing Lin, Nan Gao, Haining Zhang]
+  url: https://arxiv.org/abs/2508.09507
+  image: /assets/papers/mobile-assistant-eval.webp
+  image_alt: "Architecture of the multi-agent evaluation framework for mobile intelligent assistants"
+  links:
+    - name: arXiv
+      url: https://arxiv.org/abs/2508.09507

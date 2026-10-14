@@ -1,0 +1,12 @@
+# Education, newest first. current: true marks the ongoing entry on the timeline.
+- org: Nankai University
+  detail: Ph.D. Student · College of Software
+  start: "2026"
+  end: "2031"
+  current: true
+  logo: /assets/logos/nankai.svg
+- org: Nankai University
+  detail: Undergraduate · College of Software
+  start: "2022"
+  end: "2026"
+  logo: /assets/logos/nankai.svg

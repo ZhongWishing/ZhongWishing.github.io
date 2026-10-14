@@ -1,17 +1,86 @@
 ---
-layout: full-width
-title: blog
-# Note that this index page uses a full-width layout!
+layout: default
 ---
-
-  <h1 class="content-listing-header sans">Articles</h1>
-  <ul class="content-listing ">
-    {% for post in site.posts %}      
-        <li class="listing">
-          <hr class="slender">
-          <a href="{{ post.url | prepend: site.baseurl }}"><h3 class="contrast">{{ post.title }}</h3></a>
-          <br><span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span>  <br/>
-          <div>{{ post.excerpt }}</div> 
-        </li>
+<section id="about" class="resume-section resume-intro" aria-label="About">
+  <h1 class="resume-name">{{ site.author }}{% if site.author_zh %} <span class="resume-name-zh" lang="zh-CN">{{ site.author_zh }}</span>{% endif %}</h1>
+  {% if site.tagline %}<p class="resume-tagline">{{ site.tagline }}</p>{% endif %}
+  <div class="resume-contact">
+    {% if site.email %}
+      <a href="mailto:{{ site.email }}"><span class="icon-mail3" aria-hidden="true"></span>{{ site.email }}</a>
+    {% endif %}
+    {% for entry in site.data.social %}
+      <a href="{{ entry.link }}"><span class="{{ entry.icon }}" aria-hidden="true"></span>{{ entry.label }}</a>
     {% endfor %}
-  </ul>
+  </div>
+
+  <p class="resume-lede">I'm interested in AI agents: how they remember, adapt, and get better over time. Lately I've been especially curious about agents that improve themselves, from self-evolving harnesses to recursive self-improvement (RSI). I'm also excited about what agents can do for education (AI4Edu) and science (AI4Sci).</p>
+
+  <div class="interest-row">
+    <span class="interest-label">Research interests</span>
+    <ul class="interest-list">
+      <li>Agent</li>
+      <li>Self-Evolving Harness</li>
+      <li>RSI</li>
+      <li>AI4Edu</li>
+      <li>AI4Sci</li>
+    </ul>
+  </div>
+</section>
+
+<section id="education" class="resume-section" aria-labelledby="education-title">
+  <h2 id="education-title" class="section-title">Education</h2>
+  <ol class="timeline timeline--experience">
+    {% for school in site.data.education %}
+      {% include org-entry.html entry=school %}
+    {% endfor %}
+  </ol>
+</section>
+
+<section id="internships" class="resume-section" aria-labelledby="internships-title">
+  <h2 id="internships-title" class="section-title">Internships</h2>
+  <ol class="timeline timeline--experience">
+    {% for job in site.data.experience %}
+      {% include org-entry.html entry=job %}
+    {% endfor %}
+  </ol>
+</section>
+
+<section id="publications" class="resume-section" aria-labelledby="publications-title">
+  <h2 id="publications-title" class="section-title">Publications</h2>
+  <ol class="timeline timeline--papers">
+    {% assign paper_years = site.data.publications | group_by: "year" %}
+    {% for group in paper_years %}
+      <li class="timeline-year">{{ group.name }}</li>
+      {% for paper in group.items %}
+        <li class="timeline-entry">
+          <div class="paper-card">
+            {% if paper.image %}
+              {% if paper.url %}<a class="paper-card__thumb" href="{{ paper.url }}" tabindex="-1" aria-hidden="true">{% else %}<div class="paper-card__thumb">{% endif %}
+                <img src="{{ paper.image | prepend: site.baseurl }}" alt="{{ paper.image_alt }}" loading="lazy" decoding="async">
+              {% if paper.url %}</a>{% else %}</div>{% endif %}
+            {% endif %}
+            <div class="paper-card__body">
+              <p class="paper-card__venue"><span>{{ paper.venue }}{% if paper.note %} · {{ paper.note }}{% endif %}</span></p>
+              <h3 class="paper-card__title">{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
+              {% if paper.authors %}
+                <p class="paper-card__authors">
+                  {%- for name in paper.authors -%}
+                    {%- if name == site.author -%}<strong>{{ name }}</strong>{%- else -%}{{ name }}{%- endif -%}
+                    {%- if paper.equal_contribution contains name -%}<sup>*</sup>{%- endif -%}
+                    {%- unless forloop.last -%}, {% endunless -%}
+                  {%- endfor -%}
+                </p>
+                {% if paper.equal_contribution %}<p class="paper-card__note"><sup>*</sup>Equal contribution</p>{% endif %}
+              {% endif %}
+              {% if paper.links %}
+                <div class="paper-card__links">
+                  {% for link in paper.links %}<a href="{{ link.url }}">{{ link.name }}</a>{% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    {% endfor %}
+  </ol>
+</section>

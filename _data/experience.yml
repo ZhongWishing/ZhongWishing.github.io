@@ -1,0 +1,11 @@
+# Internships, newest first. Dates are display strings; current: true marks the ongoing entry.
+# Optional fields: detail (e.g. a role), logo (a file in assets/logos/).
+- org: Zhipu AI
+  start: Mar 2026
+  end: Present
+  current: true
+  logo: /assets/logos/zhipu.svg
+- org: vivo AI Lab
+  start: Jul 2025
+  end: Feb 2026
+  logo: /assets/logos/vivo.svg

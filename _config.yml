@@ -1,16 +1,21 @@
-baseurl: /tufte-jekyll
-title: Tufte-Jekyll
-subtitle: Content-centric blogging
-author: clay harmon
-simple_search: http://google.com/search
-description: A Jekyll theme for content-rich sites
-name: tufte
+# Keep baseurl empty for local preview. The site repository ZhongWishing/zhongjian.github.io is a
+# project site served under /zhongjian.github.io/; the GitHub Actions workflow passes that base path at build time.
+baseurl: ""
+url: "https://zhongwishing.github.io"
+title: Jian Zhong
+author: Jian Zhong
+author_zh: 钟健
+description: Jian Zhong is a Ph.D. student at the College of Software, Nankai University, interested in AI agents, self-improving agents, AI4Edu and AI4Sci.
+tagline: Ph.D. Student · College of Software, Nankai University
+email: zhongjian@mail.nankai.edu.cn
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-permalink: /articles/:short_year/:title
-timezone: America/New_York
+permalink: /articles/:short_year/:title.html
+timezone: Asia/Shanghai
 excerpt_separator: <!--more-->  # you can specify your own separator, of course.
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md']
+# Upstream demo pages, posts and images stay in the repository for reference but are not published.
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md', 'THEME-NOTES.md', 'LICENSE', 'vendor', '.gems', 'scripts',
+          'about', 'page', '_posts', '_drafts', 'feed.xml', '_page.txt', '_post.txt', 'assets/img']
 post:
   template: _post.txt
   extension: md

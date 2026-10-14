@@ -1,0 +1,87 @@
+// Visual-only overrides: retain the upstream Tufte column and note layout.
+html {
+  background-color: $paper-color;
+  color-scheme: light;
+}
+
+::selection {
+  background: $paper-highlight;
+  color: $text-color;
+  text-shadow: none;
+}
+
+mark {
+  background: $paper-highlight;
+  color: $text-color;
+  padding: 0.05em 0.15em;
+}
+
+a:focus-visible, label.margin-toggle:focus-visible {
+  outline: 2px solid $contrast-color;
+  outline-offset: 4px;
+}
+
+p > a:hover, cite > a:hover, span > a:hover,
+p > a:focus, cite > a:focus, span > a:focus {
+  color: $contrast-hover-color;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+}
+
+.subtitle, figcaption, .sidenote, .marginnote,
+.table-caption, .listing .smaller, .credits {
+  color: $muted-color;
+}
+
+pre {
+  background: $code-background-color;
+  border-left: 2px solid $border-color;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.highlight pre {
+  margin-top: 0;
+}
+
+p code, li code {
+  background: $code-background-color;
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+}
+
+pre code { background: transparent; }
+
+blockquote {
+  border-left: 2px solid $border-color;
+}
+
+div.epigraph blockquote { border-left: none; }
+
+header > nav a:hover, header > nav a:focus {
+  color: $contrast-hover-color;
+}
+
+hr.slender {
+  background-image: linear-gradient(to right, transparent, $border-color, transparent);
+}
+
+button, input[type="submit"] {
+  font-family: $sans-font;
+  background: $contrast-color;
+  color: $paper-color;
+  border: 1px solid $contrast-color;
+  padding: 0.5em 0.8em;
+}
+
+@media screen and (max-width: 760px) {
+  h1, h2, h3 { overflow-wrap: break-word; }
+  header > nav a {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    padding-right: 1.25rem;
+  }
+  pre { border-left: none; }
+}

@@ -1,0 +1,10 @@
+<li class="timeline-entry{% if include.entry.current %} is-current{% endif %}">
+  <div class="org-entry">
+    {% if include.entry.logo %}<span class="org-logo"><img src="{{ include.entry.logo | prepend: site.baseurl }}" alt="" loading="lazy" decoding="async"></span>{% endif %}
+    <div class="org-entry__text">
+      <p class="timeline-when">{{ include.entry.start }} – {{ include.entry.end }}</p>
+      <p class="experience-org">{{ include.entry.org }}</p>
+      {% if include.entry.detail %}<p class="experience-detail">{{ include.entry.detail }}</p>{% endif %}
+    </div>
+  </div>
+</li>
