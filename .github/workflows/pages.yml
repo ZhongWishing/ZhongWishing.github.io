@@ -16,7 +16,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 from 2026-10-19, which may not ship prebuilt Ruby 3.1.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       # Gemfile.lock pins Jekyll 4.2 with Liquid 4.0.3, which calls Object#tainted? (removed in Ruby 3.2).
