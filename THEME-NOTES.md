@@ -45,8 +45,7 @@ BUNDLE_GEMFILE="$PWD/Gemfile" \
 
 The upstream project uses custom Jekyll plugins, so the site is built in GitHub Actions (`.github/workflows/pages.yml`) and `_site` is deployed, rather than relying on Pages' built-in Jekyll builder.
 
-The site repository is `ZhongWishing/zhongjian.github.io` (remote `origin`; the original theme is remote `upstream`). Pushing to `main` triggers the workflow.
+The site repository is `ZhongWishing/ZhongWishing.github.io` (remote `origin`; the original theme is remote `upstream`), a user site served at `https://zhongwishing.github.io/`. Pushing to `main` triggers the workflow.
 
-1. One-time setup: in the repository settings, open Pages and set Source to "GitHub Actions", then re-run the workflow from the Actions tab.
-2. Because the repository name is not `ZhongWishing.github.io`, GitHub serves it as a project site at `https://zhongwishing.github.io/zhongjian.github.io/`. The workflow passes that base path to `--baseurl`, so links and assets resolve under the sub-path.
-3. To serve from `https://zhongwishing.github.io/` instead, rename the repository to `ZhongWishing.github.io`; no code change is needed.
+1. One-time setup: in the repository settings, open Pages and set Source to "GitHub Actions".
+2. The workflow passes the Pages base path to `--baseurl` (empty for this user site), so the same code also works if the site is ever moved to a project repository served under `/<repo>/`.

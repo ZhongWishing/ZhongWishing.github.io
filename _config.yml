@@ -1,5 +1,5 @@
-# Keep baseurl empty for local preview. The site repository ZhongWishing/zhongjian.github.io is a
-# project site served under /zhongjian.github.io/; the GitHub Actions workflow passes that base path at build time.
+# ZhongWishing/ZhongWishing.github.io is a user site served from the domain root, so baseurl stays empty.
+# The GitHub Actions workflow passes the Pages base path at build time, so a project repository also works.
 baseurl: ""
 url: "https://zhongwishing.github.io"
 title: Jian Zhong
