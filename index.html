@@ -2,18 +2,27 @@
 layout: default
 ---
 <section id="about" class="resume-section resume-intro" aria-label="About">
-  <h1 class="resume-name">{{ site.author }}{% if site.author_zh %} <span class="resume-name-zh" lang="zh-CN">{{ site.author_zh }}</span>{% endif %}</h1>
-  {% if site.tagline %}<p class="resume-tagline">{{ site.tagline }}</p>{% endif %}
-  <div class="resume-contact">
-    {% if site.email %}
-      <a href="mailto:{{ site.email }}"><span class="icon-mail3" aria-hidden="true"></span>{{ site.email }}</a>
-    {% endif %}
-    {% for entry in site.data.social %}
-      <a href="{{ entry.link }}"><span class="{{ entry.icon }}" aria-hidden="true"></span>{{ entry.label }}</a>
-    {% endfor %}
-  </div>
+  <div class="resume-intro__layout">
+    <div class="resume-intro__identity">
+      <h1 class="resume-name">{{ site.author }}{% if site.author_zh %} <span class="resume-name-zh" lang="zh-CN">{{ site.author_zh }}</span>{% endif %}</h1>
+      {% if site.tagline %}<p class="resume-tagline">{{ site.tagline }}</p>{% endif %}
+      <div class="resume-contact">
+        {% if site.email %}
+          <a href="mailto:{{ site.email }}"><span class="icon-mail3" aria-hidden="true"></span>{{ site.email }}</a>
+        {% endif %}
+        <div class="resume-profiles">
+          {% for entry in site.data.social %}
+            <a href="{{ entry.link | escape }}">{% include social-icon.html icon=entry.icon %}{{ entry.label }}</a>
+          {% endfor %}
+        </div>
+      </div>
 
-  <p class="resume-lede">I'm interested in AI agents: how they remember, adapt, and get better over time. Lately I've been especially curious about agents that improve themselves, from self-evolving harnesses to recursive self-improvement (RSI). I'm also excited about what agents can do for education (AI4Edu) and science (AI4Sci).</p>
+    </div>
+    <figure class="resume-portrait">
+      <img src="{{ '/assets/photos/about.webp' | prepend: site.baseurl }}" alt="A personal photo of two people wearing glasses" width="720" height="960" decoding="async">
+    </figure>
+    <p class="resume-lede">I'm interested in AI agents: how they remember, adapt, and get better over time. Lately I've been especially curious about agents that improve themselves, from self-evolving harnesses to recursive self-improvement (RSI). I'm also excited about what agents can do for education (AI4Edu) and science (AI4Sci).</p>
+  </div>
 
   <div class="interest-row">
     <span class="interest-label">Research interests</span>

@@ -6,7 +6,7 @@
     {% endif %}
     {% for entry in site.data.social %}
       <li>
-        <a href="{{ entry.link }}" aria-label="{{ entry.label }}"><span class="{{ entry.icon }}"></span></a>
+        <a href="{{ entry.link | escape }}" aria-label="{{ entry.label | escape }}">{% include social-icon.html icon=entry.icon %}</a>
       </li>
     {% endfor %}
   </ul>

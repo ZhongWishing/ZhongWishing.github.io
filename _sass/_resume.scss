@@ -80,6 +80,48 @@ header > nav a.active {
   padding: 1.25rem 0 2.75rem;
 }
 
+.resume-intro__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  grid-template-areas: "identity portrait" "bio portrait";
+  align-items: start;
+  gap: 0 2.5rem;
+  width: calc(80% + 2.8rem);
+  max-width: 58.8rem;
+}
+
+.resume-intro__identity {
+  grid-area: identity;
+  min-width: 0;
+}
+
+.resume-intro__identity > p, p.resume-lede {
+  width: auto;
+  padding-right: 0;
+}
+
+figure.resume-portrait {
+  grid-area: portrait;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 3rem 0 0;
+  padding: 0.65rem 0.65rem 1rem;
+  background: $mat-color;
+  border: 0.4rem solid $card-color;
+  outline: 1px solid rgba($border-color, 0.75);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba($border-color, 0.45), 0 2px 4px rgba($text-color, 0.08), 0 16px 28px -18px rgba($text-color, 0.35);
+}
+
+.resume-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border: 1px solid rgba($border-color, 0.35);
+}
+
 h1.resume-name {
   margin: 2.5rem 0 0;
   font-size: 3.6rem;
@@ -105,11 +147,18 @@ p.resume-tagline {
 
 .resume-contact {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.8rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
   margin-top: 1.1rem;
   font-size: 1.25rem;
   line-height: 1.9rem;
+}
+
+.resume-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
 }
 
 .resume-contact a {
@@ -118,9 +167,19 @@ p.resume-tagline {
   gap: 0.45rem;
 }
 
-.resume-contact [class^="icon-"] { font-size: 0.9em; }
+.social-icon {
+  display: inline-block;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.12em;
+}
+
+.resume-contact [class^="icon-"], .resume-contact .social-icon { font-size: 0.9em; }
 
 p.resume-lede {
+  grid-area: bio;
   margin-top: 2.2rem;
 }
 
@@ -460,6 +519,12 @@ p.paper-card__note {
   header > nav.group { column-gap: 1.6rem; }
   header > nav a { letter-spacing: 0.1em; }
   h1.resume-name { margin-top: 2.2rem; font-size: 3rem; }
+  .resume-intro__layout {
+    width: 94%;
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    gap: 0 2rem;
+  }
+  figure.resume-portrait { margin-top: 2.7rem; }
   ol.timeline, ol.timeline--papers {
     --tl-gap: 2.3rem;
     --tl-x: 0.5rem;
@@ -471,6 +536,22 @@ p.paper-card__note {
   .paper-card__body { margin-left: 1rem; padding-left: 1rem; }
   ol.timeline--papers > li.timeline-entry:before { top: 1.7rem; }
   ol.timeline--papers > li.timeline-entry:after { top: 2.05rem; }
+}
+
+@media screen and (max-width: 600px) {
+  .resume-intro__layout {
+    width: 90%;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "identity" "portrait" "bio";
+    gap: 1.75rem;
+  }
+  figure.resume-portrait {
+    width: 17rem;
+    max-width: 100%;
+    margin: 0;
+    justify-self: center;
+  }
+  p.resume-lede { margin-top: 0; }
 }
 
 // Phone widths: the four nav items need tighter spacing to stay on one line, and a side-by-side

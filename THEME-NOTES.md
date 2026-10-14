@@ -9,6 +9,7 @@ A single-page academic resume built on Tufte-Jekyll, set entirely in ET Book on 
 - Every piece of text uses the ET Book stack. Only the Chinese name falls back to the CJK serif fonts in the stack.
 - Palette (`_sass/_settings.scss`): paper `#f7f1e7`, highlight `#f3c969`, ink `#2d2722`, accent `#a34f2b`.
 - Screen sizing (`_sass/_resume.scss`): a fluid 11–14 px root size at the browser's default font setting keeps phones readable and makes desktop type, logos, cards and spacing more compact.
+- The framed photo sits beside About on desktop; on phones it follows the name and contact links, before the introduction.
 - One page with four anchored sections (About, Education, Internships, Publications), a sticky nav that highlights the current section, timelines, and letter-paper publication cards.
 
 ## Editing content
@@ -17,6 +18,7 @@ A single-page academic resume built on Tufte-Jekyll, set entirely in ET Book on 
 |---|---|
 | Name, Chinese name, tagline, email, site URL | `_config.yml` (`author`, `author_zh`, `tagline`, `email`, `url`) |
 | About paragraph and research-interest chips | `index.html`, the `#about` section |
+| Framed About photo | `assets/photos/about.webp`; layout and frame in `_sass/_resume.scss` |
 | Education | `_data/education.yml` |
 | Internships | `_data/experience.yml` |
 | Publications (authors, equal-contribution marks, links) | `_data/publications.yml`; figures go in `assets/papers/` |
@@ -32,6 +34,8 @@ Upstream demo pages, posts and images stay in the repository for reference but a
 - Nankai University emblem: `File:Nankai University logo.svg` on English Wikipedia.
 - vivo logo: `File:Vivo (China) logo.svg` on Wikimedia Commons.
 - Zhipu AI mark: the Z mark from `https://www.zhipuai.cn/logo.svg`, with padding added to its viewBox.
+- About photo: provided by the site owner; full composition retained, resized to 720 × 960 WebP without embedded metadata.
+- ORCID and Google Scholar icons: [Simple Icons](https://github.com/simple-icons/simple-icons), CC0 SVG paths, rendered in `_includes/social-icon.html`.
 
 ## Local preview
 

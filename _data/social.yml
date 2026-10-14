@@ -1,5 +1,11 @@
 # Shown in the contact line under the name and as footer icons.
-# Icon classes are defined in css/tufte.scss (icomoon), e.g. icon-github, icon-linkedin, icon-twitter.
+# Icons are rendered by _includes/social-icon.html; icon-* names use the existing icon font.
 - link: https://github.com/ZhongWishing
   icon: icon-github
   label: GitHub
+- link: https://orcid.org/0009-0007-0587-3942
+  icon: orcid
+  label: ORCID
+- link: "https://scholar.google.com/citations?user=4SxbyxQAAAAJ&hl=en"
+  icon: google-scholar
+  label: Google Scholar
