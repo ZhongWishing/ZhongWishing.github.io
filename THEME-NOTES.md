@@ -8,6 +8,7 @@ A single-page academic resume built on Tufte-Jekyll, set entirely in ET Book on 
 - ET Book assets are byte-identical to the files distributed by `jez/tufte-pandoc-css`; the license is at `fonts/et-book/LICENSE`.
 - Every piece of text uses the ET Book stack. Only the Chinese name falls back to the CJK serif fonts in the stack.
 - Palette (`_sass/_settings.scss`): paper `#f7f1e7`, highlight `#f3c969`, ink `#2d2722`, accent `#a34f2b`.
+- Screen sizing (`_sass/_resume.scss`): a fluid 11–14 px root size at the browser's default font setting keeps phones readable and makes desktop type, logos, cards and spacing more compact.
 - One page with four anchored sections (About, Education, Internships, Publications), a sticky nav that highlights the current section, timelines, and letter-paper publication cards.
 
 ## Editing content
