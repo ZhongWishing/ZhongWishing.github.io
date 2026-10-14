@@ -46,6 +46,8 @@ BUNDLE_GEMFILE="$PWD/Gemfile" \
 
 The upstream project uses custom Jekyll plugins, so the site is built in GitHub Actions (`.github/workflows/pages.yml`) and `_site` is deployed, rather than relying on Pages' built-in Jekyll builder.
 
+The stylesheet URL includes the build timestamp so returning visitors receive the new styles after each deployment.
+
 The site repository is `ZhongWishing/ZhongWishing.github.io` (remote `origin`; the original theme is remote `upstream`), a user site served at `https://zhongwishing.github.io/`. Pushing to `main` triggers the workflow.
 
 1. One-time setup: in the repository settings, open Pages and set Source to "GitHub Actions".
