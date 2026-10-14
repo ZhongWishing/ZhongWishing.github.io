@@ -515,6 +515,24 @@ p.paper-card__note {
 
 .credits { font-family: $body-font; }
 
+// The resume uses the full column instead of reserving Tufte's right-hand sidenote space.
+@media screen and (min-width: 761px) {
+  body {
+    width: calc(100% - 6rem);
+    max-width: 58.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+  }
+  .resume-intro__layout { width: 100%; }
+  ol.timeline--papers {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+  }
+  body > footer { width: 100%; }
+}
+
 @media screen and (max-width: 760px) {
   header > nav.group { column-gap: 1.6rem; }
   header > nav a { letter-spacing: 0.1em; }
