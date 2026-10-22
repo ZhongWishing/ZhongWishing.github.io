@@ -8,11 +8,12 @@
   note: Poster
   year: 2026
   authors: [Jian Zhong, Zeyu Liu, Pingchuan Cao, Rongduo Han, Shunye Tang, Guohuan Xie, Mingyuan Qin, Ran Ji, Xiao Liang, Wei Wang, Haining Zhang]
+  url: https://arxiv.org/abs/2610.29467
   image: /assets/papers/precomem.webp
   image_alt: "PreCoMem Figure 1: a memory evolution case study (coffee to tea)"
   links:
-    - name: Code
-      url: https://github.com/ZhongWishing/PreCoMem
+    - name: arXiv
+      url: https://arxiv.org/abs/2610.29467
 
 - title: "EvalMem: An Operation-Level Diagnostic Framework for Long-Term Memory Systems"
   venue: EMNLP 2026
