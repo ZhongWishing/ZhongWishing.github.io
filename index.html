@@ -12,7 +12,7 @@ layout: default
         {% endif %}
         <div class="resume-profiles">
           {% for entry in site.data.social %}
-            <a href="{{ entry.link | escape }}">{% include social-icon.html icon=entry.icon %}{{ entry.label }}</a>
+            <a href="{{ entry.link | escape }}" target="_blank" rel="noopener noreferrer">{% include social-icon.html icon=entry.icon %}{{ entry.label }}</a>
           {% endfor %}
         </div>
       </div>
@@ -64,13 +64,13 @@ layout: default
         <li class="timeline-entry">
           <div class="paper-card">
             {% if paper.image %}
-              {% if paper.url %}<a class="paper-card__thumb" href="{{ paper.url }}" tabindex="-1" aria-hidden="true">{% else %}<div class="paper-card__thumb">{% endif %}
+              {% if paper.url %}<a class="paper-card__thumb" href="{{ paper.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">{% else %}<div class="paper-card__thumb">{% endif %}
                 <img src="{{ paper.image | prepend: site.baseurl }}" alt="{{ paper.image_alt }}" loading="lazy" decoding="async">
               {% if paper.url %}</a>{% else %}</div>{% endif %}
             {% endif %}
             <div class="paper-card__body">
               <p class="paper-card__venue"><span>{{ paper.venue }}{% if paper.note %} · {{ paper.note }}{% endif %}</span></p>
-              <h3 class="paper-card__title">{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
+              <h3 class="paper-card__title">{% if paper.url %}<a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
               {% if paper.authors %}
                 <p class="paper-card__authors">
                   {%- for name in paper.authors -%}
@@ -83,7 +83,7 @@ layout: default
               {% endif %}
               {% if paper.links %}
                 <div class="paper-card__links">
-                  {% for link in paper.links %}<a href="{{ link.url }}">{{ link.name }}</a>{% endfor %}
+                  {% for link in paper.links %}<a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.name }}</a>{% endfor %}
                 </div>
               {% endif %}
             </div>
