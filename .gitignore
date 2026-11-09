@@ -1,7 +1,7 @@
 _site
 .sass-cache
 .jekyll-cache
-.DS\_Store
+.DS_Store
 config.codekit
 .bundle/
 .gems/
