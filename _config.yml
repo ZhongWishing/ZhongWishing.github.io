@@ -7,6 +7,8 @@ author_zh: 钟健
 description: Jian Zhong is a Ph.D. student at the College of Software, Nankai University, interested in AI agents, self-improving agents, AI4Edu and AI4Sci.
 tagline: Ph.D. Student · College of Software, Nankai University
 email: zhongjian@mail.nankai.edu.cn
+# GoatCounter site code (the subdomain, without .goatcounter.com).
+goatcounter_code: "zhongwishing"
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 timezone: Asia/Shanghai
